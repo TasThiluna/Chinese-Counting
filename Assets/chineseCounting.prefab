@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 33080598529264226}
   - component: {fileID: 65302768071924974}
   - component: {fileID: 23838392175459284}
+  - component: {fileID: 114879102399894084}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -275,6 +276,7 @@ GameObject:
   - component: {fileID: 33097011995491828}
   - component: {fileID: 65232679564009634}
   - component: {fileID: 23937508575898982}
+  - component: {fileID: 114958505814158342}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -293,6 +295,7 @@ GameObject:
   - component: {fileID: 33600580217760576}
   - component: {fileID: 65319614167062816}
   - component: {fileID: 23570108362748808}
+  - component: {fileID: 114933647880167666}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -380,6 +383,7 @@ GameObject:
   - component: {fileID: 33519660445900210}
   - component: {fileID: 65708597741892532}
   - component: {fileID: 23543069171720432}
+  - component: {fileID: 114231928512849728}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -1645,6 +1649,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - GUI/KT 3D Text
+--- !u!114 &114231928512849728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921549584067974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - KT/Blend Unlit
 --- !u!114 &114285680218443250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1870,14 +1887,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75f261671140a4429f9ef3ac7304948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 0}
+  Audio: {fileID: 0}
   bomb: {fileID: 114583593814771578}
   keys:
   - {fileID: 114019643191307356}
   - {fileID: 114660461585387152}
   - {fileID: 114596964871650290}
   - {fileID: 114340205076104518}
-  keysText: []
+  keysText:
+  - {fileID: 102738326751544500}
+  - {fileID: 102875539029529588}
+  - {fileID: 102816097703192452}
+  - {fileID: 102921756424874296}
   ledColors:
   - {fileID: 2100000, guid: 43d01ce420b184860986ce3302f1ec32, type: 2}
   - {fileID: 2100000, guid: a8753914a3528438f952b89edeecf7cb, type: 2}
@@ -2136,6 +2157,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - Standard
+--- !u!114 &114879102399894084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513494578108360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - KT/Blend Unlit
+--- !u!114 &114933647880167666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749189105550272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - KT/Blend Unlit
+--- !u!114 &114958505814158342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738091060069016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - KT/Blend Unlit
 --- !u!136 &136101474736546422
 CapsuleCollider:
   m_ObjectHideFlags: 1
