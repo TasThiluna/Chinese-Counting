@@ -137,6 +137,7 @@ public class chineseCounting : MonoBehaviour
         }
         else
         {
+          wrong = false;
           GetComponent<KMBombModule>().HandleStrike();
           Debug.LogFormat("[Chinese Counting #{0}] Strike! Resetting...", moduleId);
           pickedNumbersIndex.Clear();

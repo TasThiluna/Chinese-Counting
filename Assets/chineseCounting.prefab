@@ -824,7 +824,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7c0f328cd00dc48c6b27ca9fcd223941, type: 2}
+  - {fileID: 2100000, guid: 470e574d560fbd142b7234d8d27d57e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -960,7 +960,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8b89db399ebdb49358c90cdd82eb5889, type: 2}
+  - {fileID: 2100000, guid: 63503060817e59745ada1e2f94d02112, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1900,15 +1900,15 @@ MonoBehaviour:
   - {fileID: 102816097703192452}
   - {fileID: 102921756424874296}
   ledColors:
-  - {fileID: 2100000, guid: 43d01ce420b184860986ce3302f1ec32, type: 2}
-  - {fileID: 2100000, guid: a8753914a3528438f952b89edeecf7cb, type: 2}
-  - {fileID: 2100000, guid: 7c0f328cd00dc48c6b27ca9fcd223941, type: 2}
-  - {fileID: 2100000, guid: 8b89db399ebdb49358c90cdd82eb5889, type: 2}
+  - {fileID: 2100000, guid: c445ed31ecb95d9428dd29dae87ca2df, type: 2}
+  - {fileID: 2100000, guid: 7fe24f7617578ac4ba359c6bb9cbe9da, type: 2}
+  - {fileID: 2100000, guid: 470e574d560fbd142b7234d8d27d57e2, type: 2}
+  - {fileID: 2100000, guid: 63503060817e59745ada1e2f94d02112, type: 2}
   led2Colors:
-  - {fileID: 2100000, guid: 43d01ce420b184860986ce3302f1ec32, type: 2}
-  - {fileID: 2100000, guid: a8753914a3528438f952b89edeecf7cb, type: 2}
-  - {fileID: 2100000, guid: 7c0f328cd00dc48c6b27ca9fcd223941, type: 2}
-  - {fileID: 2100000, guid: 8b89db399ebdb49358c90cdd82eb5889, type: 2}
+  - {fileID: 2100000, guid: c445ed31ecb95d9428dd29dae87ca2df, type: 2}
+  - {fileID: 2100000, guid: 7fe24f7617578ac4ba359c6bb9cbe9da, type: 2}
+  - {fileID: 2100000, guid: 470e574d560fbd142b7234d8d27d57e2, type: 2}
+  - {fileID: 2100000, guid: 63503060817e59745ada1e2f94d02112, type: 2}
   led: {fileID: 23032391880537482}
   led2: {fileID: 23413114741824206}
   ascending:
