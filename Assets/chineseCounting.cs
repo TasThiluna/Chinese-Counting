@@ -19,6 +19,7 @@ public class chineseCounting : MonoBehaviour
     public Renderer led2;
     private int ledIndex = 0;
     private int led2Index = 0;
+    public Color[] numberColors;
 
     public String[] ascending;
     public String[] descending;
@@ -30,25 +31,27 @@ public class chineseCounting : MonoBehaviour
     private String[] correctOrder = new String[30];
     private List <int> pickedNumbersIndex = new List <int>();
     private List <int> pickedNumbersIndexOrdered = new List <int>();
+    private List <string> pressedKeys = new List <string>();
 
     static int moduleIdCounter = 1;
     int moduleId;
     private bool moduleSolved;
     private int stage = 0;
     private bool wrong;
+    private bool recalcing;
 
     void Awake()
     {
         moduleId = moduleIdCounter++;
         foreach (KMSelectable key in keys)
         {
-          KMSelectable pressedKey = key;
-          key.OnInteract += delegate () { keysPress(pressedKey); return false; };
+          key.OnInteract += delegate () { keysPress(key); return false; };
         }
     }
 
     void Start()
     {
+        recalcing = false;
         PickLEDColors();
         DetermineList();
         PickNumbers();
@@ -102,6 +105,7 @@ public class chineseCounting : MonoBehaviour
         }
         pickedNumbersIndex.Add(index);
         keysText[i].text = correctOrder[index];
+        keysText[i].color = numberColors[0];
       }
       Debug.LogFormat("[Chinese Counting #{0} The numbers are: {1}, {2}, {3}, and {4}.", moduleId, correctOrder[pickedNumbersIndex[0]], correctOrder[pickedNumbersIndex[1]], correctOrder[pickedNumbersIndex[2]], correctOrder[pickedNumbersIndex[3]]);
     }
@@ -115,10 +119,13 @@ public class chineseCounting : MonoBehaviour
 
     void keysPress(KMSelectable key)
     {
-      if (moduleSolved)
+      Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, key.transform);
+      key.AddInteractionPunch(.5f);
+      if (moduleSolved || recalcing || pressedKeys.Contains(key.GetComponentInChildren<TextMesh>().text))
       {
         return;
       }
+      pressedKeys.Add(key.GetComponentInChildren<TextMesh>().text);
       Solution = correctOrder[pickedNumbersIndexOrdered[stage]];
       Debug.LogFormat("[Chinese Counting #{0}] You pressed {1}.", moduleId, key.GetComponentInChildren<TextMesh>().text);
       if(key.GetComponentInChildren<TextMesh>().text != Solution)
@@ -133,6 +140,7 @@ public class chineseCounting : MonoBehaviour
         {
           moduleSolved = true;
           GetComponent<KMBombModule>().HandlePass();
+          Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
           Debug.LogFormat("[Chinese Counting #{0}] Module solved.", moduleId);
         }
         else
@@ -142,8 +150,19 @@ public class chineseCounting : MonoBehaviour
           Debug.LogFormat("[Chinese Counting #{0}] Strike! Resetting...", moduleId);
           pickedNumbersIndex.Clear();
           pickedNumbersIndexOrdered.Clear();
+          pressedKeys.Clear();
+          StartCoroutine(Strike());
         }
       }
+    }
+
+    IEnumerator Strike()
+    {
+      led.material = ledColors[4];
+      led2.material = led2Colors[4];
+      recalcing = true;
+      yield return new WaitForSeconds(0.5f);
+      Start();
     }
 
 }

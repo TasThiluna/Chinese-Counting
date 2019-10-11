@@ -1887,7 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75f261671140a4429f9ef3ac7304948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Audio: {fileID: 0}
+  Audio: {fileID: 114113264530232868}
   bomb: {fileID: 114583593814771578}
   keys:
   - {fileID: 114019643191307356}
@@ -1904,13 +1904,18 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7fe24f7617578ac4ba359c6bb9cbe9da, type: 2}
   - {fileID: 2100000, guid: 470e574d560fbd142b7234d8d27d57e2, type: 2}
   - {fileID: 2100000, guid: 63503060817e59745ada1e2f94d02112, type: 2}
+  - {fileID: 2100000, guid: e6ddc669e9faa4dad93207caa5a7c773, type: 2}
   led2Colors:
   - {fileID: 2100000, guid: c445ed31ecb95d9428dd29dae87ca2df, type: 2}
   - {fileID: 2100000, guid: 7fe24f7617578ac4ba359c6bb9cbe9da, type: 2}
   - {fileID: 2100000, guid: 470e574d560fbd142b7234d8d27d57e2, type: 2}
   - {fileID: 2100000, guid: 63503060817e59745ada1e2f94d02112, type: 2}
+  - {fileID: 2100000, guid: e6ddc669e9faa4dad93207caa5a7c773, type: 2}
   led: {fileID: 23032391880537482}
   led2: {fileID: 23413114741824206}
+  numberColors:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.9485294, g: 0.090668224, b: 0.090668224, a: 1}
   ascending:
   - "\u4E00"
   - "\u4E8C"
