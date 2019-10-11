@@ -66,39 +66,29 @@ public class chineseCounting : MonoBehaviour
 
     void DetermineList()
     {
-      if((ledIndex == 0 && led2Index == 0) || (ledIndex == 1 && led2Index == 2) || (ledIndex == 2 && led2Index == 3) || (ledIndex == 3 && led2Index == 1))
-      {
-        for(int i = 0; i <= 29; i++)
+        var table = "ACHD,HDAC,CHDA,HACD".Split(',');
+        switch (table[ledIndex][led2Index])
         {
-          correctOrder[i] = ascending[i];
-        }
-        Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in asending order, by value.", moduleId);
-      }
-      else if((ledIndex == 0 && led2Index == 3) || (ledIndex == 1 && ledIndex == 1) || (ledIndex == 2 && led2Index == 2) || (ledIndex == 3 && led2Index == 3))
-      {
-        for(int i = 0; i <= 29; i++)
-        {
-          correctOrder[i] = descending[i];
-        }
-          Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by value.", moduleId);
-      }
-      else if((ledIndex == 0 && led2Index == 1) || (ledIndex == 1 && led2Index == 3) || (ledIndex == 2 && led2Index == 0) || (ledIndex == 3 && led2Index == 2))
-      {
-        for(int i = 0; i <= 29; i++)
-        {
-          correctOrder[i] = charascending[i];
-        }
-        Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by number of characters.", moduleId);
-      }
-      else
-      {
-        for(int i = 0; i <= 29; i++)
-        {
-          correctOrder[i] = chardescending[i];
-        }
-        Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by number of characters.", moduleId);
-      }
+            case 'A':
+                correctOrder = ascending;
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in asending order, by value.", moduleId);
+                break;
 
+            case 'D':
+                correctOrder = descending;
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by value.", moduleId);
+                break;
+
+            case 'C':
+                correctOrder = charascending;
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in ascending order, by number of characters.", moduleId);
+                break;
+
+            default:
+                correctOrder = chardescending;
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by number of characters.", moduleId);
+                break;
+        }
     }
 
     void PickNumbers()

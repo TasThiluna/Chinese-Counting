@@ -1907,8 +1907,8 @@ MonoBehaviour:
   led2Colors:
   - {fileID: 2100000, guid: 43d01ce420b184860986ce3302f1ec32, type: 2}
   - {fileID: 2100000, guid: a8753914a3528438f952b89edeecf7cb, type: 2}
-  - {fileID: 2100000, guid: 8b89db399ebdb49358c90cdd82eb5889, type: 2}
   - {fileID: 2100000, guid: 7c0f328cd00dc48c6b27ca9fcd223941, type: 2}
+  - {fileID: 2100000, guid: 8b89db399ebdb49358c90cdd82eb5889, type: 2}
   led: {fileID: 23032391880537482}
   led2: {fileID: 23413114741824206}
   ascending:
