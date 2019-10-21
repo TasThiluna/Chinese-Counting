@@ -141,6 +141,8 @@ public class chineseCounting : MonoBehaviour
           moduleSolved = true;
           GetComponent<KMBombModule>().HandlePass();
           Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
+          led.material = ledColors[4];
+          led2.material = led2Colors[4];
           Debug.LogFormat("[Chinese Counting #{0}] Module solved.", moduleId);
         }
         else
