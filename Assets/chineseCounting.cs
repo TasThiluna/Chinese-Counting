@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
 //using Rnd = UnityEngine.Random;
@@ -107,7 +108,7 @@ public class chineseCounting : MonoBehaviour
         keysText[i].text = correctOrder[index];
         keysText[i].color = numberColors[0];
       }
-      Debug.LogFormat("[Chinese Counting #{0} The numbers are: {1}, {2}, {3}, and {4}.", moduleId, correctOrder[pickedNumbersIndex[0]], correctOrder[pickedNumbersIndex[1]], correctOrder[pickedNumbersIndex[2]], correctOrder[pickedNumbersIndex[3]]);
+      Debug.LogFormat("[Chinese Counting #{0}] The numbers are: {1}, {2}, {3}, and {4}.", moduleId, correctOrder[pickedNumbersIndex[0]], correctOrder[pickedNumbersIndex[1]], correctOrder[pickedNumbersIndex[2]], correctOrder[pickedNumbersIndex[3]]);
     }
 
     void PickOrder()
@@ -167,4 +168,81 @@ public class chineseCounting : MonoBehaviour
       Start();
     }
 
+    //twitch plays
+    private bool cmdIsValid(string param)
+    {
+        string[] parameters = param.Split(' ', ',');
+        for (int i = 1; i < parameters.Length; i++)
+        {
+            if (!parameters[i].EqualsIgnoreCase("1") && !parameters[i].EqualsIgnoreCase("2") && !parameters[i].EqualsIgnoreCase("3") && !parameters[i].EqualsIgnoreCase("4") && !parameters[i].EqualsIgnoreCase("tl") && !parameters[i].EqualsIgnoreCase("tr") && !parameters[i].EqualsIgnoreCase("bl") && !parameters[i].EqualsIgnoreCase("br") && !parameters[i].EqualsIgnoreCase("topleft") && !parameters[i].EqualsIgnoreCase("topright") && !parameters[i].EqualsIgnoreCase("bottomleft") && !parameters[i].EqualsIgnoreCase("bottomright"))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    #pragma warning disable 414
+    private readonly string TwitchHelpMessage = @"!{0} press <button> [Presses the specified button] | !{0} press <button> <button> [Example of button chaining] | !{0} reset [Resets all inputs] | Valid buttons are tl, tr, bl, br OR 1-4 being the buttons from in reading order";
+    #pragma warning restore 414
+
+    IEnumerator ProcessTwitchCommand(string command)
+    {
+        if (Regex.IsMatch(command, @"^\s*reset\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            yield return null;
+            Debug.LogFormat("[Chinese Counting #{0}] Reset of inputs triggered! (TP)", moduleId);
+            stage = 0;
+            pressedKeys.Clear();
+            yield break;
+        }
+        string[] parameters = command.Split(' ');
+        if (Regex.IsMatch(parameters[0], @"^\s*press\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            if (parameters.Length > 1)
+            {
+                if (cmdIsValid(command))
+                {
+                    yield return null;
+                    for (int i = 1; i < parameters.Length; i++)
+                    {
+                        if (parameters[i].EqualsIgnoreCase("1"))
+                        {
+                            keys[0].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("2"))
+                        {
+                            keys[1].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("3"))
+                        {
+                            keys[2].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("4"))
+                        {
+                            keys[3].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("tl") || parameters[i].EqualsIgnoreCase("topleft"))
+                        {
+                            keys[0].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("tr") || parameters[i].EqualsIgnoreCase("topright"))
+                        {
+                            keys[1].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("bl") || parameters[i].EqualsIgnoreCase("bottomleft"))
+                        {
+                            keys[2].OnInteract();
+                        }
+                        else if (parameters[i].EqualsIgnoreCase("br") || parameters[i].EqualsIgnoreCase("bottomright"))
+                        {
+                            keys[3].OnInteract();
+                        }
+                        yield return new WaitForSeconds(0.1f);
+                    }
+                }
+            }
+            yield break;
+        }
+    }
 }
