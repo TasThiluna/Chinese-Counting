@@ -45,9 +45,7 @@ public class chineseCounting : MonoBehaviour
     {
         moduleId = moduleIdCounter++;
         foreach (KMSelectable key in keys)
-        {
           key.OnInteract += delegate () { keysPress(key); return false; };
-        }
     }
 
     void Start()
@@ -97,13 +95,11 @@ public class chineseCounting : MonoBehaviour
 
     void PickNumbers()
     {
-      for(int i = 0; i <= 3; i++)
+      for(int i = 0; i < 4; i++)
       {
         int index = UnityEngine.Random.Range(0,30);
         while(pickedNumbersIndex.Contains(index))
-        {
           index = UnityEngine.Random.Range(0,30);
-        }
         pickedNumbersIndex.Add(index);
         keysText[i].text = correctOrder[index];
         keysText[i].color = numberColors[0];
@@ -123,16 +119,12 @@ public class chineseCounting : MonoBehaviour
       Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, key.transform);
       key.AddInteractionPunch(.5f);
       if (moduleSolved || recalcing || pressedKeys.Contains(key.GetComponentInChildren<TextMesh>().text))
-      {
         return;
-      }
       pressedKeys.Add(key.GetComponentInChildren<TextMesh>().text);
       Solution = correctOrder[pickedNumbersIndexOrdered[stage]];
       Debug.LogFormat("[Chinese Counting #{0}] You pressed {1}.", moduleId, key.GetComponentInChildren<TextMesh>().text);
       if(key.GetComponentInChildren<TextMesh>().text != Solution)
-      {
         wrong = true;
-      }
       stage++;
       if(stage == 4)
       {
