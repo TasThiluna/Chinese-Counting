@@ -199,37 +199,21 @@ public class chineseCounting : MonoBehaviour
                     for (int i = 1; i < parameters.Length; i++)
                     {
                         if (parameters[i].EqualsIgnoreCase("1"))
-                        {
                             keys[0].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("2"))
-                        {
                             keys[1].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("3"))
-                        {
                             keys[2].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("4"))
-                        {
                             keys[3].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("tl") || parameters[i].EqualsIgnoreCase("topleft"))
-                        {
                             keys[0].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("tr") || parameters[i].EqualsIgnoreCase("topright"))
-                        {
                             keys[1].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("bl") || parameters[i].EqualsIgnoreCase("bottomleft"))
-                        {
                             keys[2].OnInteract();
-                        }
                         else if (parameters[i].EqualsIgnoreCase("br") || parameters[i].EqualsIgnoreCase("bottomright"))
-                        {
                             keys[3].OnInteract();
-                        }
                         yield return new WaitForSeconds(0.1f);
                     }
                 }

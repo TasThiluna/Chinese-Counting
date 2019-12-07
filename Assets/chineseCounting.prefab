@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 33955346940104804}
   - component: {fileID: 136189395617350698}
   - component: {fileID: 23002626010802858}
+  - component: {fileID: 114955070170665596}
   m_Layer: 0
   m_Name: frame2
   m_TagString: Untagged
@@ -398,6 +399,7 @@ GameObject:
   - component: {fileID: 33909397070736000}
   - component: {fileID: 136240221616215032}
   - component: {fileID: 23633318770349296}
+  - component: {fileID: 114597009172262548}
   m_Layer: 0
   m_Name: frame1
   m_TagString: Untagged
@@ -1835,8 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderNames:
-  - KT/Blend Unlit
+  ShaderNames: []
 --- !u!114 &114285680218443250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2237,6 +2238,19 @@ MonoBehaviour:
   AllowSelectionWrapY: 0
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
+--- !u!114 &114597009172262548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872119084275636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShaderNames:
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114631210716014372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2348,8 +2362,7 @@ MonoBehaviour:
   m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderNames:
-  - KT/Blend Unlit
+  ShaderNames: []
 --- !u!114 &114933647880167666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2361,8 +2374,20 @@ MonoBehaviour:
   m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShaderNames: []
+--- !u!114 &114955070170665596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124672123717538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   ShaderNames:
-  - KT/Blend Unlit
+  - KT/Mobile/DiffuseTint
 --- !u!114 &114958505814158342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2374,8 +2399,7 @@ MonoBehaviour:
   m_Script: {fileID: -1005838349, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShaderNames:
-  - KT/Blend Unlit
+  ShaderNames: []
 --- !u!136 &136101474736546422
 CapsuleCollider:
   m_ObjectHideFlags: 1
