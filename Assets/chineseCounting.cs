@@ -174,6 +174,7 @@ public class chineseCounting : MonoBehaviour
         return true;
     }
 
+    // Twitch Plays
 #pragma warning disable 414
     private readonly string TwitchHelpMessage = @"!{0} press <button> [Presses the specified button] | !{0} press <button> <button> [Example of button chaining] | !{0} reset [Resets all inputs] | Valid buttons are tl, tr, bl, br OR 1-4 being the buttons from in reading order";
 #pragma warning restore 414
