@@ -175,9 +175,9 @@ public class chineseCounting : MonoBehaviour
     }
 
     // Twitch Plays
-#pragma warning disable 414
+    #pragma warning disable 414
     private readonly string TwitchHelpMessage = @"!{0} press <button> [Presses the specified button] | !{0} press <button> <button> [Example of button chaining] | !{0} reset [Resets all inputs] | Valid buttons are tl, tr, bl, br OR 1-4 being the buttons from in reading order";
-#pragma warning restore 414
+    #pragma warning restore 414
 
     IEnumerator ProcessTwitchCommand(string command)
     {
@@ -220,6 +220,16 @@ public class chineseCounting : MonoBehaviour
                 }
             }
             yield break;
+        }
+    }
+
+    IEnumerator TwitchHandleForcedSolve()
+    {
+        yield return true;
+        for (int i = stage; i < 4; i++)
+        {
+            keys.First(x => x.GetComponentInChildren<TextMesh>().text == correctOrder[pickedNumbersIndexOrdered[i]]).OnInteract();
+            yield return new WaitForSeconds(.2f);
         }
     }
 }

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{135A5FBC-68D3-C81B-5107-D3D1A64E1035}</ProjectGuid>
+    <ProjectGuid>{DE041FB8-356E-1D7D-57F6-323774373E47}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -257,10 +257,10 @@
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="KMFramework">
- <HintPath>D:/KtaneMods/ChineseCounting/Assets/Plugins/Managed/KMFramework.dll</HintPath>
+ <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/KMFramework.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/KtaneMods/ChineseCounting/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/Tom/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
