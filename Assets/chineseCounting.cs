@@ -225,7 +225,6 @@ public class chineseCounting : MonoBehaviour
 
     IEnumerator TwitchHandleForcedSolve()
     {
-        yield return true;
         for (int i = stage; i < 4; i++)
         {
             keys.First(x => x.GetComponentInChildren<TextMesh>().text == correctOrder[pickedNumbersIndexOrdered[i]]).OnInteract();
