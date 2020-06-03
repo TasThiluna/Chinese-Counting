@@ -56,7 +56,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4364387471413946}
   - component: {fileID: 33955346940104804}
-  - component: {fileID: 136189395617350698}
   - component: {fileID: 23002626010802858}
   - component: {fileID: 114955070170665596}
   m_Layer: 0
@@ -131,7 +130,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4424074505095348}
   - component: {fileID: 33299180348588140}
-  - component: {fileID: 136122268380375252}
   - component: {fileID: 23032391880537482}
   - component: {fileID: 114285680218443250}
   m_Layer: 0
@@ -189,7 +187,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4094027896120498}
   - component: {fileID: 33883543749507214}
-  - component: {fileID: 136101474736546422}
   - component: {fileID: 23413114741824206}
   - component: {fileID: 114526693736308870}
   m_Layer: 0
@@ -260,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286277854428926}
   m_Layer: 0
-  m_Name: LEDS
+  m_Name: LEDs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +325,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4482550766555628}
   - component: {fileID: 33909397070736000}
-  - component: {fileID: 136240221616215032}
   - component: {fileID: 23633318770349296}
   - component: {fileID: 114597009172262548}
   m_Layer: 0
@@ -1068,7 +1064,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 26cdee844cb231740941635a5e5962c7, type: 2}
+  - {fileID: 2100000, guid: 5aa83c34baccb1b45a3808c8503dacc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1353,7 +1349,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1101257358997054}
-  m_Mesh: {fileID: 4300000, guid: 5ab6c3be308beaa47b558e81d501cf7c, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 3c77cf8e7dd75274083895d6e611b122, type: 3}
 --- !u!33 &33208359654233912
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1374,7 +1370,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918294357355728}
-  m_Mesh: {fileID: 4300000, guid: 1c46642b7f907d844bcdfcca8625afdd, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 793c1ea7f493083439a7788ffa4b28b0, type: 3}
 --- !u!33 &33733094871063432
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2119,55 +2115,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
---- !u!136 &136101474736546422
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1504322752325718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136122268380375252
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1332885525725264}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136189395617350698
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1124672123717538}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136240221616215032
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1872119084275636}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
