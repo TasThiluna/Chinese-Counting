@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Outline
 --- !u!114 &114307605199871244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Outline
 --- !u!114 &114428393352981738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Outline
 --- !u!114 &114646393743228294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShaderNames:
-  - Standard
+  - KT/Outline
 --- !u!114 &114955070170665596
 MonoBehaviour:
   m_ObjectHideFlags: 1
