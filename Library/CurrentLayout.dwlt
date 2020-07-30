@@ -89,8 +89,8 @@ MonoBehaviour:
     y: 0
     width: 373
     height: 454
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -308,10 +308,10 @@ MonoBehaviour:
   m_LastProjectPath: D:\KtaneMods\Chinese-Counting
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 1}
     m_SelectedIDs: e0280000
     m_LastClickedID: 10464
-    m_ExpandedIDs: 00000000e028000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000e028000024290000d42900000a2a0000862a00008c2c0000bc2d0000be2d0000122e00004244000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: e83a0000f28b0000503000001e2c0000e42f0000aa2c0000000000003c090000c23b0000d02e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -457,9 +457,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 58fbffff
-    m_LastClickedID: -1192
-    m_ExpandedIDs: 56fbffff58fbffff94fbffff9afbffff9cfbffff00000000
+    m_SelectedIDs: 9afbffff
+    m_LastClickedID: -1126
+    m_ExpandedIDs: 96fbffff9afbffff9cfbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -515,9 +515,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.03092356, y: 0.051879883, z: 0.008691788}
+    m_Target: {x: 0.029661816, y: 0.051940918, z: 0.008653641}
     speed: 2
-    m_Value: {x: 0.03092356, y: 0.051879883, z: 0.008691788}
+    m_Value: {x: 0.029661816, y: 0.051940918, z: 0.008653641}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -541,13 +541,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.6777576, y: -0.05492667, z: 0.050985225, w: 0.73147255}
+    m_Target: {x: 0.67190593, y: -0.006629088, z: 0.0061057704, w: 0.7405988}
     speed: 2
-    m_Value: {x: 0.6777495, y: -0.054926015, z: 0.050984617, w: 0.73146385}
+    m_Value: {x: 0.6718975, y: -0.006629004, z: 0.006105693, w: 0.74058944}
   m_Size:
-    m_Target: 0.22911647
+    m_Target: 0.2414443
     speed: 2
-    m_Value: 0.22911647
+    m_Value: 0.2414443
   m_Ortho:
     m_Target: 1
     speed: 2
