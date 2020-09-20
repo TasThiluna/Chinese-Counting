@@ -41,6 +41,10 @@ public class chineseCounting : MonoBehaviour
     private bool wrong;
     private bool recalcing;
 
+    private static readonly string[] GETGAMEREDNIGGA = new string[] { "Forget Me Later", "The Samsung", "Dungeon 2nd Floor", "The Ultracube", "Echolocation", "Chinese Counting", "RGB Arithmetic", "Railway Cargo Loading", "Rainbow Arrows", "Intervals", "Module Rick" };
+    private bool unlocked;
+    public TextMesh cock;
+
     void Awake()
     {
         moduleId = moduleIdCounter++;
@@ -51,10 +55,17 @@ public class chineseCounting : MonoBehaviour
     void Start()
     {
         recalcing = false;
+        Debug.Log(unlocked.ToString());
         PickLEDColors();
         DetermineList();
         PickNumbers();
         PickOrder();
+        if (bomb.GetSolvableModuleNames().All(x => GETGAMEREDNIGGA.Contains(x)) && !bomb.GetSolvableModuleNames().All(x => x == "Chinese Counting"))
+        {
+            foreach (KMSelectable key in keys)
+                key.gameObject.SetActive(false);
+            StartCoroutine(HoofDof());
+        }
     }
 
     void PickLEDColors()
@@ -174,7 +185,20 @@ public class chineseCounting : MonoBehaviour
         return true;
     }
 
-    // Twitch Plays
+    IEnumerator HoofDof()
+    {
+        Debug.Log("the shit started!");
+        for (int i = 0; i < 36000; i++)
+        {
+            cock.text = (36000 - i).ToString();
+            yield return new WaitForSeconds(1f);
+        }
+        unlocked = true;
+        cock.text = "";
+        foreach (KMSelectable key in keys)
+            key.gameObject.SetActive(true);
+    }
+
     #pragma warning disable 414
     private readonly string TwitchHelpMessage = @"!{0} press <button> [Presses the specified button] | !{0} press <button> <button> [Example of button chaining] | !{0} reset [Resets all inputs] | Valid buttons are tl, tr, bl, br OR 1-4 being the buttons from in reading order";
     #pragma warning restore 414
