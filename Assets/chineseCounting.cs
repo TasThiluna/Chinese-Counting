@@ -18,6 +18,8 @@ public class chineseCounting : MonoBehaviour
     public Material[] led2Colors;
     public Renderer led;
     public Renderer led2;
+    public TextMesh colorblindText;
+    public TextMesh colorblindText2;
     private int ledIndex = 0;
     private int led2Index = 0;
     public Color[] numberColors;
@@ -46,6 +48,8 @@ public class chineseCounting : MonoBehaviour
         moduleId = moduleIdCounter++;
         foreach (KMSelectable key in keys)
             key.OnInteract += delegate () { keysPress(key); return false; };
+        colorblindText.gameObject.SetActive(GetComponent<KMColorblindMode>().ColorblindModeActive);
+        colorblindText2.gameObject.SetActive(GetComponent<KMColorblindMode>().ColorblindModeActive);
     }
 
     void Start()
@@ -62,6 +66,8 @@ public class chineseCounting : MonoBehaviour
         ledIndex = UnityEngine.Random.Range(0, 4);
         led2Index = UnityEngine.Random.Range(0, 4);
         led.material = ledColors[ledIndex];
+        colorblindText.text = "WRGO"[ledIndex].ToString();
+        colorblindText2.text = "WRGO"[led2Index].ToString();
         led2.material = led2Colors[led2Index];
         Debug.LogFormat("[Chinese Counting #{0}] The left LED is {1}, and the right LED is {2}.", moduleId, ledColors[ledIndex].name, led2Colors[led2Index].name);
     }
@@ -136,6 +142,8 @@ public class chineseCounting : MonoBehaviour
                 Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
                 led.material = ledColors[4];
                 led2.material = led2Colors[4];
+                colorblindText.text = "";
+                colorblindText2.text = "";
                 Debug.LogFormat("[Chinese Counting #{0}] Module solved.", moduleId);
             }
             else
@@ -155,6 +163,8 @@ public class chineseCounting : MonoBehaviour
     {
         led.material = ledColors[4];
         led2.material = led2Colors[4];
+        colorblindText.text = "";
+        colorblindText2.text = "";
         recalcing = true;
         yield return new WaitForSeconds(0.5f);
         Start();
