@@ -260,6 +260,9 @@
  <Reference Include="KMFramework">
  <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/KMFramework.dll</HintPath>
  </Reference>
+ <Reference Include="KTMissionGetter">
+ <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/KTMissionGetter.dll</HintPath>
+ </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
  </Reference>

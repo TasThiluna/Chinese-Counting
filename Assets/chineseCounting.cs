@@ -5,169 +5,158 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using KModkit;
-//using Rnd = UnityEngine.Random;
+using rnd = UnityEngine.Random;
 
 public class chineseCounting : MonoBehaviour
 {
-    public KMAudio Audio;
+    public new KMAudio audio;
     public KMBombInfo bomb;
+    public KMBombModule module;
+
     public KMSelectable[] keys;
-    public TextMesh[] keysText;
-
+    private TextMesh[] keyTexts;
+    public Renderer[] leds;
     public Material[] ledColors;
-    public Material[] led2Colors;
-    public Renderer led;
-    public Renderer led2;
-    public TextMesh colorblindText;
-    public TextMesh colorblindText2;
-    private int ledIndex = 0;
-    private int led2Index = 0;
-    public Color[] numberColors;
+    public TextMesh[] colorblindTexts;
 
-    public String[] ascending;
-    public String[] descending;
-    public String[] charascending;
-    public String[] chardescending;
+    private int[] ledIndices = new int[2];
+    private int[] keyLabels = new int[4];
+    private int[] solution = new int[4];
+    private int stage;
 
-    private String Solution = "";
-
-    private String[] correctOrder = new String[30];
-    private List<int> pickedNumbersIndex = new List<int>();
-    private List<int> pickedNumbersIndexOrdered = new List<int>();
-    private List<string> pressedKeys = new List<string>();
-
-    static int moduleIdCounter = 1;
-    int moduleId;
-    private bool moduleSolved;
-    private int stage = 0;
+    private static readonly string[] colorNames = new[] { "white", "red", "green", "orange" };
+    private static readonly string[] positionNames = new string[] { "top left", "top right", "bottom left", "bottom right" };
     private bool wrong;
-    private bool recalcing;
+    private bool cantPress;
+    private List<int> pressedKeys = new List<int>();
 
-    void Awake()
+    private static int moduleIdCounter = 1;
+    private int moduleId;
+    private bool moduleSolved;
+
+    private void Awake()
     {
         moduleId = moduleIdCounter++;
         foreach (KMSelectable key in keys)
-            key.OnInteract += delegate () { keysPress(key); return false; };
-        colorblindText.gameObject.SetActive(GetComponent<KMColorblindMode>().ColorblindModeActive);
-        colorblindText2.gameObject.SetActive(GetComponent<KMColorblindMode>().ColorblindModeActive);
+            key.OnInteract += delegate () { PressKey(key); return false; };
+        foreach (GameObject t in colorblindTexts.Select(x => x.gameObject))
+            t.SetActive(GetComponent<KMColorblindMode>().ColorblindModeActive);
+        keyTexts = keys.Select(key => key.GetComponentInChildren<TextMesh>()).ToArray();
     }
 
-    void Start()
+    private void Start()
     {
-        recalcing = false;
-        PickLEDColors();
-        DetermineList();
-        PickNumbers();
-        PickOrder();
-    }
-
-    void PickLEDColors()
-    {
-        ledIndex = UnityEngine.Random.Range(0, 4);
-        led2Index = UnityEngine.Random.Range(0, 4);
-        led.material = ledColors[ledIndex];
-        colorblindText.text = "WRGO"[ledIndex].ToString();
-        colorblindText2.text = "WRGO"[led2Index].ToString();
-        led2.material = led2Colors[led2Index];
-        Debug.LogFormat("[Chinese Counting #{0}] The left LED is {1}, and the right LED is {2}.", moduleId, ledColors[ledIndex].name, led2Colors[led2Index].name);
-    }
-
-    void DetermineList()
-    {
-        var table = "ACHD,HDAC,CHDA,HACD".Split(',');
-        switch (table[ledIndex][led2Index])
+        cantPress = false;
+        for (int i = 0; i < 2; i++)
         {
-            case 'A':
-                correctOrder = ascending;
-                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in asending order, by value.", moduleId);
-                break;
-
-            case 'D':
-                correctOrder = descending;
-                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by value.", moduleId);
-                break;
-
-            case 'C':
-                correctOrder = charascending;
-                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in ascending order, by number of characters.", moduleId);
-                break;
-
-            default:
-                correctOrder = chardescending;
-                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by number of characters.", moduleId);
-                break;
+            ledIndices[i] = rnd.Range(0, 4);
+            leds[i].material = ledColors[ledIndices[i]];
+            colorblindTexts[i].text = "WRGO"[ledIndices[i]].ToString();
         }
-    }
-
-    void PickNumbers()
-    {
+        Debug.LogFormat("[Chinese Counting #{0}] The left LED is {1}, and the right LED is {2}.", moduleId, colorNames[ledIndices[0]], colorNames[ledIndices[1]]);
         for (int i = 0; i < 4; i++)
         {
-            int index = UnityEngine.Random.Range(0, 30);
-            while (pickedNumbersIndex.Contains(index))
-                index = UnityEngine.Random.Range(0, 30);
-            pickedNumbersIndex.Add(index);
-            keysText[i].text = correctOrder[index];
-            keysText[i].color = numberColors[0];
+            keyLabels[i] = rnd.Range(0, 101);
+            keyTexts[i].text = ChineseNumber(keyLabels[i]);
         }
-        Debug.LogFormat("[Chinese Counting #{0}] The numbers are: {1}, {2}, {3}, and {4}.", moduleId, correctOrder[pickedNumbersIndex[0]], correctOrder[pickedNumbersIndex[1]], correctOrder[pickedNumbersIndex[2]], correctOrder[pickedNumbersIndex[3]]);
-    }
-
-    void PickOrder()
-    {
-        pickedNumbersIndexOrdered = pickedNumbersIndex.ToList();
-        pickedNumbersIndexOrdered.Sort();
-        Debug.LogFormat("[Chinese Counting #{0}] The keys should be pressed in this order: {1}, {2}, {3}, and then {4}.", moduleId, correctOrder[pickedNumbersIndexOrdered[0]], correctOrder[pickedNumbersIndexOrdered[1]], correctOrder[pickedNumbersIndexOrdered[2]], correctOrder[pickedNumbersIndexOrdered[3]]);
-    }
-
-    void keysPress(KMSelectable key)
-    {
-        Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, key.transform);
-        key.AddInteractionPunch(.5f);
-        if (moduleSolved || recalcing || pressedKeys.Contains(key.GetComponentInChildren<TextMesh>().text))
-            return;
-        pressedKeys.Add(key.GetComponentInChildren<TextMesh>().text);
-        Solution = correctOrder[pickedNumbersIndexOrdered[stage]];
-        Debug.LogFormat("[Chinese Counting #{0}] You pressed {1}.", moduleId, key.GetComponentInChildren<TextMesh>().text);
-        if (key.GetComponentInChildren<TextMesh>().text != Solution)
-            wrong = true;
-        stage++;
-        if (stage == 4)
+        Debug.LogFormat("[Chinese Counting #{0}] The labels on the keys are {1}.", moduleId, keyTexts.Select(t => t.text).Join(", "));
+        var table = "ACHD,HDAC,CHDA,HACD".Split(',');
+        switch (table[ledIndices[0]][ledIndices[1]])
         {
-            stage = 0;
-            if (!wrong)
+            case 'A':
+                solution = keyLabels.Select((x, i) => new { value = x, index = i }).OrderBy(x => x.value).Select(x => x.index).ToArray();
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in asending order, by value.", moduleId);
+                break;
+            case 'D':
+                solution = keyLabels.Select((x, i) => new { value = x, index = i }).OrderByDescending(x => x.value).Select(x => x.index).ToArray();
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by value.", moduleId);
+                break;
+            case 'C':
+                solution = keyLabels.Select((x, i) => new { value = x, index = i }).OrderBy(x => ChineseNumber(x.value).Length).ThenByDescending(x => x.value).Select(x => x.index).ToArray();
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in ascending order, by number of characters.", moduleId);
+                break;
+            case 'H':
+                solution = keyLabels.Select((x, i) => new { value = x, index = i }).OrderByDescending(x => ChineseNumber(x.value).Length).ThenBy(x => x.value).Select(x => x.index).ToArray();
+                Debug.LogFormat("[Chinese Counting #{0}] The numbers should be pressed in descending order, by number of characters.", moduleId);
+                break;
+            default:
+                throw new Exception("An unexpected value was found in the table.");
+        }
+        Debug.LogFormat("[Chinese Counting #{0}] Solution: {1}", moduleId, solution.Select(x => positionNames[x]).Join(", "));
+    }
+
+    void PressKey(KMSelectable key)
+    {
+        audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, key.transform);
+        key.AddInteractionPunch(.5f);
+        var ix = Array.IndexOf(keys, key);
+        if (moduleSolved || cantPress || pressedKeys.Contains(ix))
+            return;
+        pressedKeys.Add(ix);
+        Debug.LogFormat("[Chinese Counting #{0}] You pressed {1}.", moduleId, keyTexts[ix]);
+        if (ix != solution[stage])
+        {
+            module.HandleStrike();
+            Debug.LogFormat("[Chinese Counting #{0}] Strike! Resetting...", moduleId);
+            pressedKeys.Clear();
+            StartCoroutine(Strike());
+        }
+        else
+        {
+            stage++;
+            if (stage == 4)
             {
+                stage = 0;
+                module.HandlePass();
                 moduleSolved = true;
-                GetComponent<KMBombModule>().HandlePass();
-                Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
-                led.material = ledColors[4];
-                led2.material = led2Colors[4];
-                colorblindText.text = "";
-                colorblindText2.text = "";
-                Debug.LogFormat("[Chinese Counting #{0}] Module solved.", moduleId);
-            }
-            else
-            {
-                wrong = false;
-                GetComponent<KMBombModule>().HandleStrike();
-                Debug.LogFormat("[Chinese Counting #{0}] Strike! Resetting...", moduleId);
-                pickedNumbersIndex.Clear();
-                pickedNumbersIndexOrdered.Clear();
-                pressedKeys.Clear();
-                StartCoroutine(Strike());
+                audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
+                for (int i = 0; i < 2; i++)
+                {
+                    leds[i].material = ledColors[4];
+                    colorblindTexts[i].text = "";
+                }
+                Debug.LogFormat("[Chinese Counting #{0}] Module solved!", moduleId);
             }
         }
     }
 
     IEnumerator Strike()
     {
-        led.material = ledColors[4];
-        led2.material = led2Colors[4];
-        colorblindText.text = "";
-        colorblindText2.text = "";
-        recalcing = true;
+        for (int i = 0; i < 2; i++)
+        {
+            leds[i].material = ledColors[4];
+            colorblindTexts[i].text = "";
+        }
+        cantPress = true;
         yield return new WaitForSeconds(0.5f);
         Start();
+    }
+
+    private static string ChineseNumber(int i)
+    {
+        var digits = "一二三四五六七八九";
+        if (i == 100)
+            return "一百";
+        else if (i == 200)
+            return "二百";
+        else if (i > 100 && i < 200)
+            return "一百" + ChineseNumber(i - 100);
+        else if (i == 0)
+            return "〇";
+        else if (i.ToString().Length == 1)
+            return digits[i - 1].ToString();
+        else if (i == 10)
+            return "十";
+        else if (i < 20)
+            return "十" + digits[(i % 10) - 1];
+        else if (i % 10 == 0)
+            return digits[(i / 10) - 1] + "十";
+        else
+        {
+            var x = digits[int.Parse(i.ToString()[0].ToString()) - 1];
+            var y = digits[int.Parse(i.ToString()[1].ToString()) - 1];
+            return x + "十" + y;
+        }
     }
 
     // Twitch Plays
@@ -184,9 +173,9 @@ public class chineseCounting : MonoBehaviour
         return true;
     }
 
-    #pragma warning disable 414
+#pragma warning disable 414
     private readonly string TwitchHelpMessage = @"!{0} press <button> [Presses the specified button] | !{0} press <button> <button> [Example of button chaining] | !{0} reset [Resets all inputs] | Valid buttons are tl, tr, bl, br OR 1-4 being the buttons from in reading order";
-    #pragma warning restore 414
+#pragma warning restore 414
 
     IEnumerator ProcessTwitchCommand(string command)
     {
@@ -234,10 +223,10 @@ public class chineseCounting : MonoBehaviour
 
     IEnumerator TwitchHandleForcedSolve()
     {
-        for (int i = stage; i < 4; i++)
+        while (!moduleSolved)
         {
-            keys.First(x => x.GetComponentInChildren<TextMesh>().text == correctOrder[pickedNumbersIndexOrdered[i]]).OnInteract();
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.1f);
+            keys[solution[stage]].OnInteract();
         }
     }
 }
