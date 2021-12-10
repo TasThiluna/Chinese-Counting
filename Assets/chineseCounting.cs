@@ -93,7 +93,7 @@ public class chineseCounting : MonoBehaviour
         if (moduleSolved || cantPress || pressedKeys.Contains(ix))
             return;
         pressedKeys.Add(ix);
-        Debug.LogFormat("[Chinese Counting #{0}] You pressed {1}.", moduleId, keyTexts[ix]);
+        Debug.LogFormat("[Chinese Counting #{0}] You pressed {1}.", moduleId, keyTexts[ix].text);
         if (ix != solution[stage])
         {
             module.HandleStrike();
