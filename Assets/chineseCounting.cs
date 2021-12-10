@@ -106,7 +106,6 @@ public class chineseCounting : MonoBehaviour
             stage++;
             if (stage == 4)
             {
-                stage = 0;
                 module.HandlePass();
                 moduleSolved = true;
                 audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
@@ -122,6 +121,7 @@ public class chineseCounting : MonoBehaviour
 
     IEnumerator Strike()
     {
+        stage = 0;
         for (int i = 0; i < 2; i++)
         {
             leds[i].material = ledColors[4];

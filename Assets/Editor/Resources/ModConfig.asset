@@ -23,6 +23,6 @@ MonoBehaviour:
     [url=https://ktane.timwi.de/HTML/Chinese%20Counting.html]Manual HTML[/url]
 
     [url=https://ktane.timwi.de/PDF/Chinese%20Counting.pdf]Manual PDF[/url]'
-  version: 1.4.1
+  version: 1.4.2
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 45ffa825a9e5de64f86473dbfface1de, type: 3}
