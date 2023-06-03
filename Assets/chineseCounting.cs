@@ -85,7 +85,7 @@ public class chineseCounting : MonoBehaviour
         Debug.LogFormat("[Chinese Counting #{0}] Solution: {1}", moduleId, solution.Select(x => positionNames[x]).Join(", "));
     }
 
-    void PressKey(KMSelectable key)
+    private void PressKey(KMSelectable key)
     {
         audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, key.transform);
         key.AddInteractionPunch(.5f);
@@ -119,7 +119,7 @@ public class chineseCounting : MonoBehaviour
         }
     }
 
-    IEnumerator Strike()
+    private IEnumerator Strike()
     {
         stage = 0;
         for (int i = 0; i < 2; i++)
@@ -221,7 +221,7 @@ public class chineseCounting : MonoBehaviour
         }
     }
 
-    IEnumerator TwitchHandleForcedSolve()
+    private IEnumerator TwitchHandleForcedSolve()
     {
         while (!moduleSolved)
         {

@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 114353036580447944}
   - component: {fileID: 114646393743228294}
   - component: {fileID: 114585291058221220}
-  - component: {fileID: 114575237859422084}
+  - component: {fileID: 114154706211081014}
   m_Layer: 0
   m_Name: chineseCounting
   m_TagString: Untagged
@@ -1725,6 +1725,18 @@ MonoBehaviour:
   m_Script: {fileID: -1675560866, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114154706211081014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1391211534393914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cfb889a07d5fd4e9baed7960bb397f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorblindMode: 0
 --- !u!114 &114168477275164228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1967,18 +1979,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
---- !u!114 &114575237859422084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391211534393914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cadefbb4e8c0c743893b8a7efee5ac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorblindMode: 1
 --- !u!114 &114583593814771578
 MonoBehaviour:
   m_ObjectHideFlags: 1
