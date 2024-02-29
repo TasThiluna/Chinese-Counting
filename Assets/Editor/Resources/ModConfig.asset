@@ -19,13 +19,10 @@ MonoBehaviour:
 
     Module idea and implementation by TasThing.
 
-    Huge thanks to Royal_Flu$h for his modding tutorial and to Timwi for helping me
-    out here and there.
 
+    [url=https://ktane.timwi.de/HTML/Chinese%20Counting.html]Manual HTML[/url]
 
-    Manual HTML: https://ktane.timwi.de/HTML/Chinese%20Counting.html
-
-    Manual PDF: https://ktane.timwi.de/PDF/Chinese%20Counting.pdf'
-  version: 1.1
+    [url=https://ktane.timwi.de/PDF/Chinese%20Counting.pdf]Manual PDF[/url]'
+  version: 1.4.2
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 45ffa825a9e5de64f86473dbfface1de, type: 3}
