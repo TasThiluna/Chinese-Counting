@@ -54,11 +54,14 @@ public class chineseCounting : MonoBehaviour
             colorblindTexts[i].text = "WRGO"[ledIndices[i]].ToString();
         }
         Debug.LogFormat("[Chinese Counting #{0}] The left LED is {1}, and the right LED is {2}.", moduleId, colorNames[ledIndices[0]], colorNames[ledIndices[1]]);
+        tryAgain:
         for (int i = 0; i < 4; i++)
         {
             keyLabels[i] = rnd.Range(0, 101);
             keyTexts[i].text = ChineseNumber(keyLabels[i]);
         }
+        if (keyLabels.Distinct().Count() != 4)
+            goto tryAgain;
         Debug.LogFormat("[Chinese Counting #{0}] The labels on the keys are {1}.", moduleId, keyTexts.Select(t => t.text).Join(", "));
         var table = "ACHD,HDAC,CHDA,HACD".Split(',');
         switch (table[ledIndices[0]][ledIndices[1]])
@@ -223,10 +226,11 @@ public class chineseCounting : MonoBehaviour
 
     private IEnumerator TwitchHandleForcedSolve()
     {
+        while (cantPress) yield return true;
         while (!moduleSolved)
         {
-            yield return new WaitForSeconds(.1f);
             keys[solution[stage]].OnInteract();
+            yield return new WaitForSeconds(.1f);
         }
     }
 }

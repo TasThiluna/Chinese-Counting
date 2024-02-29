@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>4</LangVersion>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,7 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\chineseCounting.cs" />
+     <Compile Include="Assets\KMScripts\AssemblyShare.cs" />
      <Compile Include="Assets\KMScripts\Easing.cs" />
+     <Compile Include="Assets\KMScripts\GameFixes.cs" />
      <Compile Include="Assets\KMScripts\GeneralExtensions.cs" />
      <Compile Include="Assets\KMScripts\KMBombInfoExtensions.cs" />
      <Compile Include="Assets\KMScripts\KMBossModule.cs" />
@@ -60,6 +62,7 @@
      <Compile Include="Assets\KMScripts\KMRuleSeedable.cs" />
      <Compile Include="Assets\KMScripts\PrivateWhenPlayingAttribute.cs" />
      <Compile Include="Assets\KMScripts\ReadOnlyWhenPlayingAttribute.cs" />
+     <Compile Include="Assets\KMScripts\ReflectionHelper.cs" />
      <Compile Include="Assets\TestHarness\EdgeworkConfiguration.cs" />
      <Compile Include="Assets\TestHarness\NeedyTimer.cs" />
      <Compile Include="Assets\TestHarness\SevenSegDisplay.cs" />
@@ -257,23 +260,32 @@
  <Reference Include="UnityEngine.SpatialTracking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
+ <Reference Include="0Harmony">
+ <HintPath>C:/Users/brend/OneDrive/Documents/GitHub/Chinese-Counting/Assets/Plugins/Managed/0Harmony.dll</HintPath>
+ </Reference>
+ <Reference Include="DotNetZip">
+ <HintPath>C:/Users/brend/OneDrive/Documents/GitHub/Chinese-Counting/Assets/Plugins/Managed/DotNetZip.dll</HintPath>
+ </Reference>
  <Reference Include="KMFramework">
- <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/KMFramework.dll</HintPath>
+ <HintPath>C:/Users/brend/OneDrive/Documents/GitHub/Chinese-Counting/Assets/Plugins/Managed/KMFramework.dll</HintPath>
+ </Reference>
+ <Reference Include="KtaneModkitPatches">
+ <HintPath>C:/Users/brend/OneDrive/Documents/GitHub/Chinese-Counting/Assets/Plugins/Managed/KtaneModkitPatches.dll</HintPath>
  </Reference>
  <Reference Include="KTMissionGetter">
- <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/KTMissionGetter.dll</HintPath>
+ <HintPath>C:/Users/brend/OneDrive/Documents/GitHub/Chinese-Counting/Assets/Plugins/Managed/KTMissionGetter.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/KtaneMods/Chinese-Counting/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/brend/OneDrive/Documents/GitHub/Chinese-Counting/Assets/Plugins/Managed/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Users/Cora/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Users/brend/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Users/Cora/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
+ <HintPath>C:/Users/brend/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
- <HintPath>C:/Users/Cora/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/brend/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
